@@ -1,0 +1,56 @@
+{
+	"dataset": {
+		"name": "DB1",
+		"train_generator": {
+			"repetitions": [1, 2, 4, 6, 8, 9],
+			"batch_size": 250,
+			"sample_weight": true,
+			"dim": [1, 10],
+			"window_size": 0,
+			"window_step": 0,
+			"shuffle": true,
+			"pad_value": -10.0
+		},
+		"valid_generator": {
+			"repetitions": [3, 10],
+			"batch_size": 1,
+			"sample_weight": false,
+			"dim": [1, 10],
+			"window_size": 0,
+			"window_step": 0,
+			"shuffle": false,
+			"update_after_epoch": false,
+			"pad_value": -10.0
+		}
+	},
+
+	"model": {
+		"name": "EmgLstmNet",
+		"save": true,
+		"save_file": "DB1_EmgLstmNet_3",
+		"extra": {
+			"n_dropout": 0.01,
+			"n_l2": 0.0005,
+			"lstm_units": [128],
+			"classify_as": "last"
+		}
+	},
+
+	"training": {
+		"optimizer": "adam",
+		"epochs": 100,
+		"l_rate": 0.01,
+		"l_rate_schedule": {
+			"lr_start": 0.01,
+			"schedule_type": "constant"
+		}
+	},
+
+	"logging": {
+		"enable": true,
+		"log_file": "DB1_EmgLstmNet_3"
+	},
+
+	"subjects": [1,4,5,9,11,15,17,20,25,27]
+
+}

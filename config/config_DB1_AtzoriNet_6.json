@@ -1,0 +1,56 @@
+{
+	"dataset": {
+		"name": "DB1",
+		"train_generator": {
+			"repetitions": [4, 6, 10],
+			"batch_size": 256,
+			"sample_weight": true,
+			"dim": [15,10,1],
+			"window_size": 15,
+			"window_step": 5,
+			"shuffle": true,
+			"noise_snr_db": 25,
+			"size_factor": 1
+		},
+		"valid_generator": {
+			"repetitions": [1, 2, 3, 4, 6, 8, 9, 10],
+			"batch_size": 1,
+			"sample_weight": false,
+			"dim": [15,10,1],
+			"window_size": 15,
+			"window_step": 15,
+			"shuffle": false,
+			"update_after_epoch": false
+		}
+	},
+
+	"model": {
+		"name": "AtzoriNet",
+		"save": true,
+		"save_file": "DB1_AtzoriNet_4",
+		"extra": {
+			"n_dropout": 0,
+			"n_pool": "average",
+			"n_l2": 0.0005,
+			"batch_norm": false
+		}
+	},
+
+	"training": {
+		"optimizer": "adam",
+		"epochs": 30,
+		"l_rate": 0.01,
+		"l_rate_schedule": {
+			"lr_start": 0.01,
+			"schedule_type": "constant"
+		}
+	},
+
+	"logging": {
+		"enable": true,
+		"log_file": "DB1_AtzoriNet_4"
+	},
+
+	"subjects": [1,4,5,9,11,15,17,20,25,27]
+
+}
